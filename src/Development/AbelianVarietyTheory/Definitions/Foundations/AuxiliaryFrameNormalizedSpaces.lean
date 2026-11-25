@@ -55,8 +55,6 @@ def spacesNorm : Spaces R F E :=
       exact_mod_cast hT.ne_zero
     z_orth := fun x => diag_ext_single _ _ (fun _ => false) x _ pz le_rfl }
 
-theorem spacesNorm_Y_sig (j : ℕ) (τ : E →+* ℂ) : ((spacesNorm R cm T hT pz hpz).Y j).sig τ = sigYD R j := spY_sig R j τ
-
 theorem spacesNorm_z_norm : ((spacesNorm R cm T hT pz hpz).X R.m).hT (spacesNorm R cm T hT pz hpz).z
     (spacesNorm R cm T hT pz hpz).z = (T : E) := by
   refine (diag_single_single (R.N R.m) (fun _ => false)
