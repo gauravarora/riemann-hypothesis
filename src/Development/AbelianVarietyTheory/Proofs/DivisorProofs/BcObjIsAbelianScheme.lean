@@ -38,7 +38,7 @@ variable {O O' B B' : Type} [CommRing O] [CommRing O'] [CommRing B] [CommRing B'
 
 abbrev bcObj (a : O →+* B) (A : Over (Sp O)) : Over (Sp B) := (Over.pullback (spMap a)).obj A
 
-instance bcObj.instGrpObj (a : O →+* B) (A : Over (Sp O)) [GrpObj A] : GrpObj (bcObj a A) :=
+instance (priority := low) bcObj.instGrpObj (a : O →+* B) (A : Over (Sp O)) [GrpObj A] : GrpObj (bcObj a A) :=
   Functor.grpObjObj
 
 end BaseChange

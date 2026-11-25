@@ -18,7 +18,7 @@ section GtIso
 
 variable {S : Scheme.{0}} {E : SplitExt S} {G₁ G₂ : Over S} [GrpObj G₁] [GrpObj G₂]
 
-instance isMonHom_inv_of_iso (e : G₁ ≅ G₂) [IsMonHom e.hom] : IsMonHom e.inv where
+instance (priority := low) isMonHom_inv_of_iso (e : G₁ ≅ G₂) [IsMonHom e.hom] : IsMonHom e.inv where
   one_hom := by rw [← cancel_mono e.hom]; simp
   mul_hom := by
     rw [← cancel_mono e.hom]
