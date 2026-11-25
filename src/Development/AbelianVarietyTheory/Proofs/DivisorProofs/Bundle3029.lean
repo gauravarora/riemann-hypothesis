@@ -255,6 +255,7 @@ open ReciprocityTheory.AnForm.R GlobalTheory.ZH GlobalTheory.Poinc GlobalTheory.
 attribute [local instance] Over.cartesianMonoidalCategory
 open GlobalTheory.UT ReciprocityTheory.ChartRestriction.G.DVR
 open Classical
+attribute [-instance] GlobalTheory.DeRhamCpl.bcObj.instGrpObj ReciprocityTheory.ChartRestriction.G.Geo.Tor.isMonHom_inv_of_iso
 
 namespace GlobalTheory.Poinc.Sep
 
