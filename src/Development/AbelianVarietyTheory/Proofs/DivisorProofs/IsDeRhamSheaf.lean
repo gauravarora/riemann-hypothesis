@@ -21,6 +21,6 @@ variable {T : Scheme.{0}} (A : Over T) [GrpObj A]
 abbrev onAff {V : T.Opens} (hV : IsAffineOpen V) : Over (Sp Γ(T, V)) :=
   (Over.pullback hV.fromSpec).obj A
 
-instance {V : T.Opens} (hV : IsAffineOpen V) : GrpObj (onAff A hV) := Functor.grpObjObj
+instance (priority := low) {V : T.Opens} (hV : IsAffineOpen V) : GrpObj (onAff A hV) := Functor.grpObjObj
 
 end GlobalTheory.DeRhamSheaf
