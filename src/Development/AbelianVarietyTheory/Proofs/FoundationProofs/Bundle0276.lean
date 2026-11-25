@@ -216,8 +216,8 @@ theorem GlobalTheory.ConjNorm.unitary_all : ∀ D : D7, IntertwinerUnitary D := 
   obtain ⟨f₂, s₂, d₂, c₂⟩ := GlobalTheory.ConjNorm.Inter.klat_facts hc h₂
   have hH := GlobalTheory.ConjNorm.Inter.isHerm_sesqOf D (tor0 D cc δ) N N'
   have hψ := (GlobalTheory.InducedType.induced_type D).1.1
-  have := klat_finite hψ hc.1.1 h₁ h₂ f₂
-  have := klat_finite hψ hc.1.1 h₂ h₁ f₁
+  have := GlobalTheory.ConjNorm.Inter.klat_finite hψ hc.1.1 h₁ h₂ f₂
+  have := GlobalTheory.ConjNorm.Inter.klat_finite hψ hc.1.1 h₂ h₁ f₁
   have : (MeasureTheory.volume : MeasureTheory.Measure (Fin N' → Fin N → ℂ)).IsAddHaarMeasure :=
     MeasureTheory.Measure.pi.isAddHaarMeasure _
   have : (MeasureTheory.volume : MeasureTheory.Measure (VC D N N')).IsAddHaarMeasure :=

@@ -25,7 +25,7 @@ open GlobalTheory.RowLaw.CvEnd GlobalTheory.PlaceProj
 variable {C : Type} [Field C] {V : VF C}
 
 theorem mm_sum' {ι : Type} (s : Finset ι) (f : ι → C) (h : ∀ i ∈ s, V.MM (f i)) : V.MM (∑ i ∈ s, f i) :=
-  Finset.sum_induction f V.MM (fun _ _ => mm_add) mm_zero h
+  Finset.sum_induction f V.MM (fun _ _ => mm_add) GlobalTheory.PlaceProj.mm_zero h
 
 def ordIdeal (C : Type) [Field C] {τ : Type} (w : τ → ℕ) (n : ℕ) : Ideal (MvPowerSeries τ C) where
   carrier := {F | F ∈ ordGe C w n}
@@ -58,7 +58,7 @@ theorem mm_subst {σ τ : Type} {a : σ → MvPowerSeries τ C} (ha : MvPowerSer
     {F : MvPowerSeries σ C} (hF : ∀ μ, V.MM (MvPowerSeries.coeff μ F)) (e : τ →₀ ℕ) :
     V.MM (MvPowerSeries.coeff e (MvPowerSeries.subst a F)) := by
   rw [MvPowerSeries.coeff_subst ha]
-  refine finsum_induction (fun x => V.MM x) mm_zero (fun _ _ => mm_add) fun μ => ?_
+  refine finsum_induction (fun x => V.MM x) GlobalTheory.PlaceProj.mm_zero (fun _ _ => mm_add) fun μ => ?_
   rw [smul_eq_mul, mul_comm]
   refine mm_mul ?_ (hF μ)
   revert e
@@ -340,7 +340,7 @@ theorem tangent_mm_of_nonDeg : ∀ (C : Type) [Field C] (V : VF C) (d : ℕ) [Ne
     push Not at hne
     refine hN γ hγ hne (fun i μ hμ0 hμ1 => ?_) hcob
     rw [additive_low H hγ0 hlow i μ]
-    · exact mm_zero
+    · exact GlobalTheory.PlaceProj.mm_zero
     · rw [weight_one, Finsupp.degree_eq_sum, Fin.sum_univ_two]
       nlinarith
   have hco : ∀ i, PowerSeries.coeff 1 (γ i) = ∑ c, w c * Y.u g c i := by
