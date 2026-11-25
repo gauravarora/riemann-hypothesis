@@ -67,11 +67,6 @@ def RdInvG (U : Unf Xo c σ r) : Prop :=
   ∀ a n, Dom a n → ∀ f ∈ sec Xo c a n, ∀ k, ∀ γ ∈ (U.X k).Γ, ∀ x ∈ (U.X k).dom,
     rdU U f k (lact γ x) = rdU U f k x
 
-def SecGen (U : Unf Xo c σ r) : Prop :=
-  ∀ a n, Dom a n → ∀ k, ∃ b m, Dom b m ∧
-    (∃ f ∈ sec Xo c b m, ∃ x ∈ (U.X k).dom, rdU U f k x ≠ 0) ∧
-    (∃ f ∈ sec Xo c (a + b) (n + m), ∃ x ∈ (U.X k).dom, rdU U f k x ≠ 0)
-
 variable (U : Unf Xo c σ r)
 
 theorem rdU_lact (hU : IsUnf U) {a : (E →+* ℂ) × ℕ → ℕ} {n : ℕ} (hdn : Dom a n) {f : Rul Xo c}
