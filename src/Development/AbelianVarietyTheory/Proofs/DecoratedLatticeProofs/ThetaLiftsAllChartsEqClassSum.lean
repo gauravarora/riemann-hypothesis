@@ -23,6 +23,11 @@ namespace GlobalTheory.SeeSaw.LiftSum
 
 variable {D : D7}
 
+theorem ontoUni_inB (θ : InfFam D) (V : HSp D) (B : D.what₂.Tau → Matrix (Fin V.rank) (Fin V.rank) ℂ) {n : ℕ} (hn : V.rank = n)
+    (h : OntoUni fun k : GinfC V => inN θ V B hn k.1) : OntoUni fun k : GinfC V => inB θ V B k.1 := by
+  subst hn
+  exact h
+
 theorem castP_surj {p q a b : ℕ} (hp : p = a) (hq : q = b) (Q : FP D.what₂.Tau a b) :
     ∃ P : PolF D q p, castP hp hq P = Q := by
   subst hp hq
