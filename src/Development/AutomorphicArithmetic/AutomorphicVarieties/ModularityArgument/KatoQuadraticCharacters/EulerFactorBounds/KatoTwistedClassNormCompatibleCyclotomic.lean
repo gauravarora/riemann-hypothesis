@@ -49,7 +49,7 @@ def heF (X : Tower Ω ε) (l p N M : ℕ) (a : Fam X M) : Fam X M := fun x y =>
 
 end
 
-instance primeNeZero (p : ℕ) [h : Fact p.Prime] : NeZero p := ⟨h.out.ne_zero⟩
+instance (priority := low) primeNeZero (p : ℕ) [h : Fact p.Prime] : NeZero p := ⟨h.out.ne_zero⟩
 
 def SApi : Prop :=
   ∀ (Ω : Type) [Field Ω] [Algebra ℚ Ω] [IsAlgClosure ℚ Ω] (ε : Ω →+* ℂ) (X : Tower Ω ε) (l : ℕ) [Fact l.Prime] (n : ℕ), Equivalence (CgF X l n) ∧ (∀ a b a' b', CgF X l n a b → CgF X l n a' b' → CgF X l n (a + a') (b + b') ∧ CgF X l n (a - a') (b - b')) ∧
