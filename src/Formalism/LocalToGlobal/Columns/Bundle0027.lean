@@ -232,22 +232,6 @@ def TilMove (u : d.what₂.Word) : Prop :=
 
 variable (hQ : PtSurj d)
 
-def tilAd (u : d.what₂.Word) (hM : TilMove a u) :
-    CF.TilAd (tildeLatticeAgreement a hS hH hP u) (classAgreement a hS hH hQ u d.R.m le_rfl) where
-  ka := fun c => ⟨(hM c).choose.1, (Subgroup.ext_iff.1 (xp_clsG_U d.sp.cm d.hX d.hPr d.σ₀ u (d.lev d.R.m)
-    (colDia (X := d.X) (Pr := d.Pr) d.R u d.R.m) (d.repr u d.R.m) (hQ u d.R.m)
-    (fun c => (stepGSD (Pr := d.Pr) d.W d.lev u d.R.m).outSec.spec c) (stepCrd a hS hH u d.R.m le_rfl)) _).2 (hM c).choose.2⟩
-  til_ad := fun c g hg => by
-    have h1 := xp_clsPG_y d.sp.cm d.σ₀ d.levP.inv d.reprP hP (fun c => (ptGSD (Pr := d.Pr) d.W d.levP).outSec.spec c)
-      (crdPr a hS hH) c
-    have h2 := xp_clsG_y d.sp.cm d.hX d.hPr d.σ₀ u (d.lev d.R.m) (colDia (X := d.X) (Pr := d.Pr) d.R u d.R.m) (d.repr u d.R.m)
-      (hQ u d.R.m) (fun c => (stepGSD (Pr := d.Pr) d.W d.lev u d.R.m).outSec.spec c) (stepCrd a hS hH u d.R.m le_rfl) (d.tilC u c)
-    have hg' : CF.IsExt (d.colRec a) (d.z0 u) (inclE (F := d.host.F) (FiniteAdeleRing (𝓞 d.host.F) d.host.F))
-        (ptOfD d.sp.cm (d.R.N d.R.m - 1) ∅ d.Pr.vGs 1 (d.reprP c)).1.1 g.1 := by
-      rw [← h1]; exact hg
-    have h3 := (hM c).choose_spec.2 g hg'
-    exact (congrArg (fun t => bc (inclE (F := d.host.F) (FiniteAdeleRing (𝓞 d.host.F) d.host.F)) (d.tilGa u c).1 * t) h2).trans h3
-
 end Rec
 
 end Formalism.L2.Col

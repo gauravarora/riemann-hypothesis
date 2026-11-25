@@ -25,16 +25,6 @@ lemma wt_pos_nat (α : σ →₀ ℕ) : 0 < (α.prod fun _ k => k.factorial : �
 lemma conj_wt (α : σ →₀ ℕ) : (starRingEnd ℂ) (wt α) = wt α :=
   FockRaiseLowInner.wt_conj α
 
-lemma fockInner_eq_sum (P Q : MvPolynomial σ ℂ) (S : Finset (σ →₀ ℕ))
-    (hS : ∀ α, AddMonoidAlgebra.coeff P α ≠ 0 → AddMonoidAlgebra.coeff Q α ≠ 0 → α ∈ S) :
-    FockH1Action.fockInner P Q = ∑ α ∈ S, (starRingEnd ℂ) (AddMonoidAlgebra.coeff P α) * AddMonoidAlgebra.coeff Q α * wt α := by
-  refine FockRaiseLowInner.fockInner_eq_sum P Q S fun α hα => ?_
-  by_cases hP : AddMonoidAlgebra.coeff P α = 0
-  · rw [hP, map_zero, zero_mul]
-  · by_cases hQ : AddMonoidAlgebra.coeff Q α = 0
-    · rw [hQ, mul_zero]
-    · exact absurd (hS α hP hQ) hα
-
 lemma fockInner_eq_sum_left (P Q : MvPolynomial σ ℂ) (S : Finset (σ →₀ ℕ))
     (hS : P.support ⊆ S) :
     FockH1Action.fockInner P Q = ∑ α ∈ S, (starRingEnd ℂ) (AddMonoidAlgebra.coeff P α) * AddMonoidAlgebra.coeff Q α * wt α :=

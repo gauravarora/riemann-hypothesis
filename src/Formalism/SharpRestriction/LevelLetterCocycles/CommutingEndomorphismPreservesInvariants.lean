@@ -202,13 +202,6 @@ section Lat
 
 open Formalism.IrreducibleCountingLemmas
 
-theorem sIdx_eq {R W : Type} [CommRing R] [IsDomain R] [IsDiscreteValuationRing R] [AddCommGroup W]
-    [Module R W] (l : ℕ) (M N' : Submodule R W) :
-    sIdx l M N' = (TW.sIdx M N' : ℝ) / ((IsDiscreteValuationRing.addVal R (l : R)).toNat : ℝ) := by
-  unfold sIdx lenR TW.sIdx TW.relLen
-  push_cast
-  rw [sub_div]
-
 variable {R : Type} [CommRing R] [IsDomain R] [IsDiscreteValuationRing R] {U : Type} [AddCommGroup U]
   [Module R U]
 
