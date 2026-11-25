@@ -149,27 +149,6 @@ end GlobalTheory.Proof.shape_normalisedThetaCombinations_dualBases_at_d
 
 namespace GlobalTheory.Proof.shape_normalisedThetaCombinations_dualBases_at_d
 
-theorem expS_eq (D : D7) {N N' : ℕ} {p : ℕ} [Fact p.Prime] (S : ℂ_[p]) (u : HH D → ℂ_[p]) :
-    product_zeroth_first_parts.expS ℂ_[p] (-(S • ∑ t : HH D, u t • ∑ a : Fin N, ∑ b : Fin N',
-      (MvPowerSeries.X ((false, t), a, b) * MvPowerSeries.X ((true, t), a, b) :
-        MvPowerSeries ((Bool × HH D) × Fin N × Fin N') ℂ_[p]))) =
-    Formalism.DworkPowerSeriesWeights.mvExp ((-S) • Formalism.L2.Th1.G.betaPair (HH D) N N' u) := by
-  have e : (-(S • ∑ t : HH D, u t • ∑ a : Fin N, ∑ b : Fin N',
-      (MvPowerSeries.X ((false, t), a, b) * MvPowerSeries.X ((true, t), a, b) :
-        MvPowerSeries ((Bool × HH D) × Fin N × Fin N') ℂ_[p]))) =
-      (-S) • Formalism.L2.Th1.G.betaPair (HH D) N N' u := by
-    rw [neg_smul]
-    congr 2
-    unfold Formalism.L2.Th1.G.betaPair
-    refine Finset.sum_congr rfl fun t _ => ?_
-    rw [Fintype.sum_prod_type, MvPowerSeries.smul_eq_C_mul, Finset.mul_sum]
-    refine Finset.sum_congr rfl fun a _ => ?_
-    rw [Finset.mul_sum]
-    refine Finset.sum_congr rfl fun b _ => ?_
-    rw [mul_assoc]
-  rw [e]
-  rfl
-
 theorem norm_bound {p : ℕ} [Fact p.Prime] {x : ℂ_[p]} (h : ‖x‖ ≤ ‖(p : ℂ_[p])‖ ^ (-(1 / 2 : ℝ))) :
     ‖x‖ ≤ (p : ℝ) ^ ((1 : ℝ) / 2) := by
   have hp : (0 : ℝ) < p := by exact_mod_cast (Fact.out : p.Prime).pos

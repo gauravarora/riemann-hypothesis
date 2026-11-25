@@ -192,9 +192,6 @@ theorem sumList_perm {l l' : List (WD h)} (hp : l.Perm l') : sumList l = sumList
     ⟨fun a b c => by rw [← WD.lpSum_assoc, WD.lpSum_comm a b, WD.lpSum_assoc]⟩
   exact hp.foldr_eq _
 
-theorem charZero_adicCompletion : CharZero (w.adicCompletion E) :=
-  charZero_of_injective_algebraMap (algebraMap E (w.adicCompletion E)).injective
-
 end GlobalTheory.LocLanglands.LangExt
 
 

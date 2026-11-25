@@ -266,10 +266,6 @@ def valuationAbs (v : Valuation R ℝ≥0) (hv : v.supp = ⊥) : AbsoluteValue R
 
 variable [Nontrivial R] (a : AbsoluteValue R ℝ) (ha : IsNonarchimedean a)
 
-def gaussAbs : AbsoluteValue (MvPolynomial σ R) ℝ :=
-  valuationAbs (gaussVal (absValuation a ha))
-    (gaussVal_supp_eq_bot_of_supp _ (absValuation_supp a ha))
-
 variable {K : Type*} [Field K] (a : AbsoluteValue K ℝ) (ha : IsNonarchimedean a)
 
 variable {F : Type*} [Field F] [Algebra (MvPolynomial σ K) F]
