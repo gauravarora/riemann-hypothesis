@@ -164,7 +164,7 @@ section SA
 
 variable {g : ℕ} [Fact g.Prime] {N kk s : ℕ}
 
-instance instNZ : NeZero g := ⟨(Fact.out : g.Prime).ne_zero⟩
+instance (priority := low) instNZ : NeZero g := ⟨(Fact.out : g.Prime).ne_zero⟩
 
 open Classical in
 theorem eJ_coeff (ψ : AddChar (ZMod g) ℂ) (v : GL (Fin N) (ZMod g)) :
