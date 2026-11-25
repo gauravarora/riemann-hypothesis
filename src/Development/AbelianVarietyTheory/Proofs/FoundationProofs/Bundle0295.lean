@@ -333,8 +333,8 @@ theorem exists_scalar (hc : Crv D cc δ) {e0 : VC D N N' → ℂ}
       Iop D (tor0 D cc δ) (La0 D (tor0 D cc δ) N N') (La D (tor0 D cc δ) L L') e0 := by
   have hg1 := (GlobalTheory.InducedType.induced_type D).1
   have k0 : KLat D (tor0 D cc δ) (La0 D (tor0 D cc δ) N N') :=
-    Or.inr ⟨_, _, sd_of_moves (GlobalTheory.VacuumScalar.moves_one D N), sd_of_moves (GlobalTheory.VacuumScalar.moves_one D N'), rfl⟩
-  have k1 : KLat D (tor0 D cc δ) (La D (tor0 D cc δ) L L') := Or.inr ⟨_, _, sd_of_moves hL, sd_of_moves hL', rfl⟩
+    Or.inr ⟨_, _, GlobalTheory.VacuumScalar.sd_of_moves (GlobalTheory.VacuumScalar.moves_one D N), GlobalTheory.VacuumScalar.sd_of_moves (GlobalTheory.VacuumScalar.moves_one D N'), rfl⟩
+  have k1 : KLat D (tor0 D cc δ) (La D (tor0 D cc δ) L L') := Or.inr ⟨_, _, GlobalTheory.VacuumScalar.sd_of_moves hL, GlobalTheory.VacuumScalar.sd_of_moves hL', rfl⟩
   obtain ⟨-, hTh, -, -⟩ := _root_.GlobalTheory.theta_translation_intertwiner_unitary D cc δ hc N N' _ _ k0 k1 e0 he
   obtain ⟨a1, -, a3, a4, -, a6, -⟩ := lattice_facts hc he W.nz hL hL'
   obtain ⟨hline, hW, -⟩ := _root_.GlobalTheory.ThetaLine.theta_line D hg1 cc δ hc N N' _ k1
