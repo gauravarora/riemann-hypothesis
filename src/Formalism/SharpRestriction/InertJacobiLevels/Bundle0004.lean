@@ -14,10 +14,6 @@ namespace Formalism.MainNotions.Inhab
 
 open Formalism.BasicNotions Formalism.FrobeniusOrbits
 
-theorem tau_top_places_iff (D : D7) (t : G.HH D) : D.R.tau1 t ∈ D.host.topPlaces ↔ t ∈ D.host.TT := by
-  rw [← plGG_false, plGG_top_iff]
-  exact ⟨fun h => h.2, fun h => ⟨rfl, h⟩⟩
-
 structure LatHyp {D : D7} (hT : GatTies D) {L : SizeData₂ D} (X : G.Inst D L) where
   vOf : ∀ u (w : D.what₂.places.Pl) (hg : GIdx D.host (D.mem u).A.T (D.what₂.places.resChar w)),
     G.HH D → Fin (D.gat u w hg).P.nV

@@ -612,9 +612,6 @@ section Division
 
 variable {p : ℕ} [Fact p.Prime] {K : IntermediateField ℚ_[p] (PadicAlgCl p)}
 
-def ltPoly (π : OK p K) : Polynomial (PadicAlgCl p) :=
-  Polynomial.X ^ resCard π + Polynomial.C (π : PadicAlgCl p) * Polynomial.X
-
 end Division
 
 section LTRecip

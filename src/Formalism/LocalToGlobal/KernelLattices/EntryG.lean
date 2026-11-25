@@ -39,9 +39,6 @@ section AtRec
 
 open Formalism.DivisionValues (PlOver)
 
-def StdOver {E : Type} [Field E] [NumberField E] {n : ℕ} (g : ℕ) (Lat : Submodule (𝓞 E) (Sp E n)) : Prop :=
-  ∀ P : HeightOneSpectrum (𝓞 E), (g : 𝓞 E) ∈ P.asIdeal → localization₂ P.asIdeal Lat = stdAt E n P
-
 end AtRec
 
 section Hyp
