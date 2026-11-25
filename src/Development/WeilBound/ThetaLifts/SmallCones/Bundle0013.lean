@@ -55,18 +55,6 @@ theorem form_swap_zero (hσ : ∀ x, σ (σ x) = x) {J : Matrix (Fin n) (Fin n) 
   rw [h0, mul_zero] at this
   exact (map_eq_zero σ).1 this
 
-theorem hTens_vec (a c : AE F E) (x p : Fin n → E) (y q : Fin d → E) :
-    hTens (cA σ) (incM F X.J) (incM F W.J) (a • incM F (vecMulVec x y)) (c • incM F (vecMulVec p q)) =
-      a * cA σ c * inclR (F := F) (AF F) (form σ X.J x p * form σ W.J y q) := by
-  have hc : ∀ z : E, cA σ (inclR (F := F) (AF F) z) = inclR (F := F) (AF F) (σ z) := fun z => rfl
-  set_option synthInstance.maxHeartbeats 100000 in
-    simp only [hTens, form, dotProduct, mulVec, incM, Matrix.smul_apply, map_apply, vecMulVec_apply, smul_eq_mul, map_mul, hc, map_sum,
-    Finset.mul_sum, Finset.sum_mul]
-  rw [Finset.sum_comm]
-  refine Finset.sum_congr rfl fun j _ => ?_
-  rw [Finset.sum_congr rfl fun i _ => Finset.sum_comm, Finset.sum_comm]
-  exact Finset.sum_congr rfl fun l _ => Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun k _ => by ring
-
 theorem plane_span {H : Plane E n n₁} {i₀ i₁ : ℕ} (h : H.IsAdapted σ B X X₁ i₀ i₁) (hL : X.L.IsFullLattice E) (z : Fin n → E) :
     ∃ (s t : E) (u : Fin n₁ → E), z = s • H.x + H.ι *ᵥ u + t • H.y := by
   have hz : z ∈ Submodule.span E (X.L : Set (Fin n → E)) := by rw [Submodule.IsFullLattice.span_eq_top (self := hL)]; trivial

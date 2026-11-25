@@ -255,10 +255,6 @@ namespace VacIn
 
 variable {H emb} {cc : Ideal (𝓞 H.K)} {δ : ℂ} (V : VacIn H emb cc δ)
 
-def thMM : (ι → ℂ) → ℂ := thM V.L V.ω₀ (Real.sqrt H.d / 2) (lamMM H emb (lamOf H cc δ)) V.gC V.kc.kappa
-
-def thZero (N N' : ℕ) : VC ι N N' → ℂ := tensPow V.thMM N N'
-
 def thHalf (N N' : ℕ) (L : Lt H N) : VC ι N N' → ℂ :=
   Iop H (lamOf H cc δ) (La H emb (lamOf H cc δ) (stdL H N) (stdL H N')) (La H emb (lamOf H cc δ) L (stdL H N')) (V.thZero N N')
 
