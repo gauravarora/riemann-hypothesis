@@ -29,7 +29,7 @@ section Local
 
 open GlobalTheory.SplitFlip GlobalTheory.SplitWeil
 
-attribute [-instance] Formalism.DoubleCosetMeasures.instMeasMat
+attribute [-instance] Formalism.DoubleCosetMeasures.instMeasGL Formalism.DoubleCosetMeasures.instBorelGL Formalism.DoubleCosetMeasures.instMeasMat
 
 variable {k : Type} [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k]
   [MeasurableSpace k] [BorelSpace k] {A' D : Type} [Fintype A'] [DecidableEq A'] [Fintype D] [DecidableEq D] {a : ℕ}
