@@ -37,7 +37,7 @@ variable {k : Type} [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNonarchim
 theorem bigZetaIntegral_equivariant (μ : Measure (GL (Fin a) k)) [μ.IsHaarMeasure] (ϖ : kˣ) (σ : Fin a ⊕ A' ≃ D) (ν β : kˣ →* ℂˣ)
     {g : GL (Fin a) k} (hg : g ∈ KO k (Fin a)) {c : GL D k} (hc : c ∈ KO k D) (Φ : Matrix (Fin a) D k → ℂ) (h : GL D k) :
     (ν (gdet g) : ℂ) * bigP μ ϖ σ ν β (fun X => Φ (g.val * X * c.valᵀ)) h =
-      β (gdet c) * bigP μ ϖ σ ν β Φ (h * c⁻¹) := by
+      (β (gdet c) : ℂ) * bigP μ ϖ σ ν β Φ (h * c⁻¹) := by
   have e1 : (invT (h * c⁻¹)).val = (invT h).val * c.valᵀ := by rw [map_mul, map_inv, Units.val_mul, invT_inv_val]
   have e2 : gdet h = gdet (h * c⁻¹) * gdet c := by rw [← gdet_mul, inv_mul_cancel_right]
   rw [bigZetaIntegral_eq, bigZetaIntegral_eq, e1, e2, apow_mul, apow_of_valuation_eq_one (valuation_gdet_of_mem_KO hc), map_mul, Units.val_mul]
